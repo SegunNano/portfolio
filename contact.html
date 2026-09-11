@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact — Segun Fadipe</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: start;
+        }
+
+        .contact-left p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.9;
+            font-weight: 300;
+            margin-bottom: 16px;
+        }
+
+        .contact-left p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .contact-links {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        @media (max-width: 900px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">SF.</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle theme"></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Contact</span>
+            </div>
+            <h1 class="page-header-title">
+                Let's work <span>together.</span>
+            </h1>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="contact-grid reveal">
+
+                <div class="contact-left">
+                    <p>
+                        I'm currently open to <strong>backend engineering roles</strong>,
+                        freelance projects, and automation consulting. Based in Lagos —
+                        available for hybrid and remote work.
+                    </p>
+                    <p>
+                        Whether you have a project in mind, a role to fill, or just want
+                        to talk backend architecture — my inbox is always open.
+                    </p>
+                    <p>
+                        I typically respond within <strong>24 hours.</strong>
+                    </p>
+                    <div class="avail-badge">
+                        <span class="avail-dot"></span>
+                        Available for new opportunities
+                    </div>
+                </div>
+
+                <div class="contact-links">
+                    <a href="mailto:segunfadipe97@gmail.com" class="contact-item">
+                        <div class="contact-icon"><i data-lucide="mail"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Email</div>
+                            <div class="contact-value">segunfadipe97@gmail.com</div>
+                        </div>
+                        <div class="contact-arrow"><i data-lucide="arrow-right"></i></div>
+                    </a>
+
+                    <a href="https://github.com/SegunNano" target="_blank" class="contact-item">
+                        <div class="contact-icon"><i data-lucide="github"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">GitHub</div>
+                            <div class="contact-value">github.com/SegunNano</div>
+                        </div>
+                        <div class="contact-arrow"><i data-lucide="arrow-right"></i></div>
+                    </a>
+
+                    <a href="tel:+2348106662572" class="contact-item">
+                        <div class="contact-icon"><i data-lucide="phone"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Phone</div>
+                            <div class="contact-value">+234 810 666 2572</div>
+                        </div>
+                        <div class="contact-arrow"><i data-lucide="arrow-right"></i></div>
+                    </a>
+
+                    <a href="./assets/SEGUN_FADIPE_RESUME.pdf" download class="contact-item">
+                        <div class="contact-icon"><i data-lucide="file-text"></i></div>
+                        <div class="contact-info">
+                            <div class="contact-label">Resume</div>
+                            <div class="contact-value">Download CV (PDF)</div>
+                        </div>
+                        <div class="contact-arrow"><i data-lucide="arrow-right"></i></div>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-logo">SF.</span>
+            <span class="footer-right"><span id="year"></span> · Lagos, Nigeria</span>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

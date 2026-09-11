@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Segun Fadipe</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: start;
+            margin-bottom: 100px;
+        }
+
+        .about-text p {
+            font-size: 15px;
+            color: var(--text-muted);
+            line-height: 1.95;
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .about-text p strong {
+            color: var(--text);
+            font-weight: 500;
+        }
+
+        .about-right {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        /* Skills */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+        }
+
+        /* Currently learning strip */
+        .learning-strip {
+            margin-top: 56px;
+            padding: 28px 32px;
+            background: var(--bg-card);
+            border: 1px solid var(--gold-border);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .learning-strip-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--gold);
+        }
+
+        .learning-strip-icon svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .learning-strip-label {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 10px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 8px;
+        }
+
+        .learning-strip-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        /* Beyond code */
+        .beyond-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 16px;
+            margin-top: 56px;
+        }
+
+        .beyond-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: var(--radius);
+            padding: 24px;
+            transition: all 0.25s;
+        }
+
+        .beyond-card:hover {
+            border-color: var(--gold-border);
+            transform: translateY(-3px);
+        }
+
+        .beyond-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 10px;
+            background: var(--gold-dim);
+            border: 1px solid var(--gold-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 16px;
+            color: var(--gold);
+        }
+
+        .beyond-icon svg {
+            width: 18px;
+            height: 18px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .beyond-title {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .beyond-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.7;
+            font-weight: 300;
+        }
+
+        @media (max-width: 900px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .beyond-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .learning-strip {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .beyond-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">SF.</a>
+            <ul class="nav-links">
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle theme"></button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Page header -->
+    <div class="page-header">
+        <div class="container">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">About</span>
+            </div>
+            <h1 class="page-header-title">
+                Who I <span>am.</span>
+            </h1>
+        </div>
+    </div>
+
+    <!-- About section -->
+    <section>
+        <div class="container">
+            <div class="about-grid reveal">
+                <div class="about-text">
+                    <p>
+                        I'm a <strong>Backend Developer & Automation Engineer</strong> based in Lagos, Nigeria
+                        with 2+ years of experience building production-grade APIs and event-driven systems.
+                        I specialize in the Node.js ecosystem — particularly around
+                        <strong>queue-based architectures</strong>, Redis caching strategies,
+                        and workflow automation.
+                    </p>
+                    <p>
+                        I care deeply about writing <strong>clean, maintainable code</strong> and building
+                        systems that scale. I refactor instinctively, think about performance early,
+                        and always ask <em>"what happens when this breaks?"</em> before shipping.
+                    </p>
+                    <p>
+                        My path into engineering is unconventional — I hold a <strong>BSc in Botany</strong>
+                        from the University of Lagos, and I'm currently pursuing a funded Master's degree
+                        in Europe focused on algae biotechnology. The scientific mindset — hypothesis,
+                        experiment, iterate — transfers directly into how I architect systems.
+                    </p>
+                    <p>
+                        Currently expanding into <strong>AI integration and LLM-powered backends</strong> —
+                        OpenAI API, Ollama, and LangChain.js automation pipelines. I believe the next
+                        generation of backend engineers will be the ones who know how to wire AI
+                        into production systems reliably.
+                    </p>
+                </div>
+
+                <div class="about-right">
+                    <div class="stat-block">
+                        <div class="stat-num">2+</div>
+                        <div class="stat-label">Years building backend systems</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-num">36+</div>
+                        <div class="stat-label">GitHub repositories</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-num">4</div>
+                        <div class="stat-label">Production projects shipped</div>
+                    </div>
+                    <div class="stat-block">
+                        <div class="stat-num">∞</div>
+                        <div class="stat-label">Refactors done with zero regret</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skills -->
+            <div class="eyebrow reveal">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Tech Stack</span>
+            </div>
+            <h2 class="section-title reveal">Skills & tools</h2>
+
+            <div class="skills-grid reveal">
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="server"></i></div>
+                    <div class="skill-card-title">Backend</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Node.js</span>
+                        <span class="skill-tag">Express.js</span>
+                        <span class="skill-tag">REST APIs</span>
+                        <span class="skill-tag">NestJS</span>
+                        <span class="skill-tag">Socket.IO</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="database"></i></div>
+                    <div class="skill-card-title">Database & Cache</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">Mongoose</span>
+                        <span class="skill-tag">Redis</span>
+                        <span class="skill-tag">Aggregation</span>
+                        <span class="skill-tag">TTL Indexes</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="layers"></i></div>
+                    <div class="skill-card-title">Queue & Jobs</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">BullMQ</span>
+                        <span class="skill-tag">Node-cron</span>
+                        <span class="skill-tag">Workers</span>
+                        <span class="skill-tag">p-limit</span>
+                        <span class="skill-tag">Job Queues</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="zap"></i></div>
+                    <div class="skill-card-title">Automation & AI</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">N8n</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">Ollama</span>
+                        <span class="skill-tag">Webhooks</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="shield"></i></div>
+                    <div class="skill-card-title">Auth & Security</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">JWT</span>
+                        <span class="skill-tag">bcrypt</span>
+                        <span class="skill-tag">Helmet</span>
+                        <span class="skill-tag">Rate Limiting</span>
+                        <span class="skill-tag">Sessions</span>
+                    </div>
+                </div>
+
+                <div class="skill-card">
+                    <div class="skill-card-icon"><i data-lucide="tool"></i></div>
+                    <div class="skill-card-title">Tools & DevOps</div>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">PM2</span>
+                        <span class="skill-tag">Railway</span>
+                        <span class="skill-tag">Oracle Cloud</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Currently learning -->
+            <div class="learning-strip reveal">
+                <div class="learning-strip-icon">
+                    <i data-lucide="book-open"></i>
+                </div>
+                <div>
+                    <div class="learning-strip-label">Currently Learning</div>
+                    <div class="learning-strip-items">
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">LangChain.js</span>
+                        <span class="skill-tag">RAG Pipelines</span>
+                        <span class="skill-tag">Docker</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Beyond code -->
+            <div style="margin-top: 80px;">
+                <div class="eyebrow reveal">
+                    <span class="eyebrow-line"></span>
+                    <span class="eyebrow-text">Beyond Code</span>
+                </div>
+                <h2 class="section-title reveal">A fuller picture</h2>
+
+                <div class="beyond-grid reveal">
+                    <div class="beyond-card">
+                        <div class="beyond-icon"><i data-lucide="music"></i></div>
+                        <div class="beyond-title">Bass Guitar Mentor</div>
+                        <div class="beyond-desc">
+                            Teaching youths from low-income families in Lagos. 6+ mentees now self-funding their
+                            university education through music.
+                        </div>
+                    </div>
+
+                    <div class="beyond-card">
+                        <div class="beyond-icon"><i data-lucide="leaf"></i></div>
+                        <div class="beyond-title">Algae Researcher</div>
+                        <div class="beyond-desc">
+                            BSc Botany, UNILAG. Research intern at NIOMR. Pursuing a funded Master's in algae
+                            biotechnology in Europe.
+                        </div>
+                    </div>
+
+                    <div class="beyond-card">
+                        <div class="beyond-icon"><i data-lucide="globe"></i></div>
+                        <div class="beyond-title">UN Ocean Decade</div>
+                        <div class="beyond-desc">
+                            Member of the Global Seaweed Coalition and Global ECOP under the UN Ocean Decade Initiative
+                            since 2025.
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-logo">SF.</span>
+            <span class="footer-right"><span id="year"></span> · Lagos, Nigeria</span>
+        </div>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

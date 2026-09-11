@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Projects — Segun Fadipe</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        .projects-list {
+            display: flex;
+            flex-direction: column;
+            gap: 24px;
+        }
+
+        .case-study-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-size: 12px;
+            font-family: 'JetBrains Mono', monospace;
+            color: var(--gold);
+            border: 1px solid var(--gold-border);
+            background: var(--gold-dim);
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .case-study-btn:hover {
+            background: var(--gold);
+            color: #0d0d0d;
+        }
+
+        .case-study-btn svg {
+            width: 13px;
+            height: 13px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Mermaid */
+        .mermaid {
+            font-size: 13px;
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="index.html" class="nav-logo">SF.</a>
+            <ul class="nav-links">
+                <li><a href="about.html">About</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-right">
+                <button class="theme-toggle" onclick="toggleTheme()" id="theme-btn" aria-label="Toggle theme"></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <div class="eyebrow">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Projects</span>
+            </div>
+            <h1 class="page-header-title">Things I've <span>built.</span></h1>
+        </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="projects-list">
+
+                <!-- ── CURIO ── -->
+                <div class="project-card featured reveal">
+                    <div class="project-badge">
+                        <i data-lucide="star"></i>
+                        Featured Project
+                    </div>
+                    <div class="project-top">
+                        <div>
+                            <div class="project-name">Curio</div>
+                            <div class="project-sub">Personalized News Digest Platform</div>
+                        </div>
+                        <div class="project-links-wrap">
+                            <a href="https://github.com/SegunNano/curio" target="_blank" class="project-link">
+                                <i data-lucide="github"></i> GitHub
+                            </a>
+                            <a href="https://curio-news-app.up.railway.app" target="_blank" class="project-link">
+                                <i data-lucide="external-link"></i> Live
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        A production-grade news aggregation and digest delivery system. Fetches 130+ articles daily
+                        across 13 categories, caches at category level shared across all users, and delivers
+                        personalized email digests on user-defined schedules.
+                    </p>
+                    <div class="project-points">
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Queue-based architecture with BullMQ — async email delivery, news fetching and
+                                inactivity detection across multiple background workers</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Category-level Redis caching shared across all users — eliminates redundant DB queries
+                                as user base grows</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>MongoDB aggregation pipeline groups and slices articles at DB level — no in-memory
+                                filtering</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Intelligent digest scheduling using MongoDB $expr operators — only due users fetched,
+                                no app-level filtering</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Concurrent email sends via Promise.allSettled + p-limit — 10 concurrent max, failed
+                                emails don't block others</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">MongoDB</span>
+                        <span class="tech-pill">Redis</span>
+                        <span class="tech-pill">BullMQ</span>
+                        <span class="tech-pill">N8n</span>
+                        <span class="tech-pill">Nodemailer</span>
+                        <span class="tech-pill">NewsData.io</span>
+                    </div>
+                    <button class="case-study-btn" onclick="openModal('modal-curio')">
+                        <i data-lucide="book-open"></i>
+                        Read Case Study
+                    </button>
+                </div>
+
+                <!-- ── NANOURL ── -->
+                <div class="project-card reveal">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-name">NanoURL</div>
+                            <div class="project-sub">URL Shortener with Quota Management</div>
+                        </div>
+                        <div class="project-links-wrap">
+                            <a href="https://github.com/SegunNano/url_shortener" target="_blank" class="project-link">
+                                <i data-lucide="github"></i> GitHub
+                            </a>
+                            <a href="https://nanourl-0s58.onrender.com" target="_blank" class="project-link">
+                                <i data-lucide="external-link"></i> Live
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        URL shortening service with custom short codes, automatic redirection, user authentication,
+                        email verification, and monthly quota management via Node-cron.
+                    </p>
+                    <div class="project-points">
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Hash generation for unique short links with MongoDB fast lookups</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Full auth flow — email verification and automated password reset</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Node-cron monthly quota reset — fair usage enforcement across all users</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">MongoDB</span>
+                        <span class="tech-pill">Passport.js</span>
+                        <span class="tech-pill">Node-cron</span>
+                        <span class="tech-pill">EJS</span>
+                    </div>
+                    <button class="case-study-btn" onclick="openModal('modal-nanourl')">
+                        <i data-lucide="book-open"></i>
+                        Read Case Study
+                    </button>
+                </div>
+
+                <!-- ── LUDO KING ── -->
+                <div class="project-card reveal">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-name">Ludo King</div>
+                            <div class="project-sub">Real-time Multiplayer Game</div>
+                        </div>
+                        <div class="project-links-wrap">
+                            <a href="https://github.com/SegunNano/ludo-king" target="_blank" class="project-link">
+                                <i data-lucide="github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc">
+                        Multiplayer Ludo game with real-time room creation, synchronized game state, and complete rule
+                        enforcement — all powered by WebSockets.
+                    </p>
+                    <div class="project-points">
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Socket.IO for synchronized dice rolls, player turns and game movement</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Complete game logic — turn management, rule enforcement, win conditions</span>
+                        </div>
+                        <div class="project-point">
+                            <span class="project-point-bullet">→</span>
+                            <span>Optimized for low latency real-time gameplay</span>
+                        </div>
+                    </div>
+                    <div class="project-tech">
+                        <span class="tech-pill">Node.js</span>
+                        <span class="tech-pill">Socket.IO</span>
+                        <span class="tech-pill">Express</span>
+                        <span class="tech-pill">Passport.js</span>
+                        <span class="tech-pill">EJS</span>
+                    </div>
+                </div>
+
+                <!-- ── CDS CONNECT ── (placeholder — fill in when ready) -->
+                <div class="project-card reveal">
+                    <div class="project-top">
+                        <div>
+                            <div class="project-name">CDS Connect</div>
+                            <div class="project-sub"><!-- add tagline --></div>
+                        </div>
+                        <div class="project-links-wrap">
+                            <a href="#" class="project-link">
+                                <i data-lucide="github"></i> GitHub
+                            </a>
+                        </div>
+                    </div>
+                    <p class="project-desc"><!-- add description --></p>
+                    <div class="project-points">
+                        <!-- add bullet points -->
+                    </div>
+                    <div class="project-tech">
+                        <!-- add tech pills -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ── CURIO CASE STUDY MODAL ── -->
+    <div class="modal-overlay" id="modal-curio">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-curio')">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="eyebrow" style="margin-bottom: 8px;">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Case Study</span>
+            </div>
+            <h2
+                style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:4px;">
+                Curio</h2>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:36px;">
+                Personalized News Digest Platform</p>
+
+            <div class="case-section">
+                <div class="case-section-label">01 — Problem</div>
+                <p>Most news aggregators show the same feed to everyone. I wanted to build a system where each user gets
+                    a personalized digest of only the categories they care about, delivered at a frequency they control
+                    — without the backend making redundant API calls for every single user.</p>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">02 — Architecture</div>
+                <div class="mermaid-wrap">
+                    <pre class="mermaid">
+flowchart TD
+    A[Node-cron 6AM] -->|addToQueue| B[BullMQ newsFetch]
+    B --> C[Worker]
+    C -->|fetch 13 categories| D[NewsData.io API]
+    D -->|upsert articles| E[(MongoDB)]
+    C -->|invalidate| F[(Redis Cache)]
+
+    G[User visits /news] --> H{Redis cache?}
+    H -->|hit| I[Serve instantly]
+    H -->|miss| J[Query MongoDB]
+    J -->|cache 30min| F
+    J --> I
+
+    K[Node-cron 8AM] -->|addToQueue| L[BullMQ digest]
+    L --> M[Worker]
+    M -->|$expr filter| E
+    M -->|aggregation| E
+    M -->|p-limit 10| N[N8n Webhook]
+    N --> O[Gmail SMTP]
+    M -->|updateMany| E
+          </pre>
+                </div>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">03 — Key Technical Decisions</div>
+                <ul>
+                    <li><strong>Category-level caching over user-level:</strong> Articles are identical for all users in
+                        a category. Caching per category means 1000 users following technology share one cache entry
+                        instead of 1000.</li>
+                    <li><strong>MongoDB $expr for digest scheduling:</strong> Instead of loading all users into memory
+                        and filtering in JavaScript, the query filters directly in MongoDB — only users whose digest is
+                        due today are returned.</li>
+                    <li><strong>Promise.allSettled + p-limit:</strong> Sending 100 emails concurrently would overwhelm
+                        N8n. p-limit controls throughput at 10 concurrent sends. allSettled means one failure doesn't
+                        stop the rest.</li>
+                    <li><strong>Only update successful sends:</strong> lastNotifiedAt is only updated for users whose
+                        email actually sent — tracked via Promise.allSettled result status mapping back to user IDs.
+                    </li>
+                    <li><strong>TTL index for auto cleanup:</strong> Articles auto-delete after 7 days via MongoDB TTL
+                        index — no manual cron needed for cleanup.</li>
+                </ul>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">04 — Impact</div>
+                <ul>
+                    <li>3 total DB calls to process the entire daily digest — regardless of user count</li>
+                    <li>130+ articles fetched and stored daily across 13 categories</li>
+                    <li>Category cache shared across users eliminates N×13 redundant queries</li>
+                    <li>Redis pipeline for bulk cache invalidation — single round trip</li>
+                </ul>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+                <a href="https://github.com/SegunNano/curio" target="_blank" class="btn btn-outline"
+                    style="font-size:12px;padding:10px 20px;">
+                    <i data-lucide="github"></i> View Code
+                </a>
+                <a href="https://curio-news-app.up.railway.app" target="_blank" class="btn btn-gold"
+                    style="font-size:12px;padding:10px 20px;">
+                    <i data-lucide="external-link"></i> Live Demo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── NANOURL CASE STUDY MODAL ── -->
+    <div class="modal-overlay" id="modal-nanourl">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-nanourl')">
+                <i data-lucide="x"></i>
+            </button>
+
+            <div class="eyebrow" style="margin-bottom: 8px;">
+                <span class="eyebrow-line"></span>
+                <span class="eyebrow-text">Case Study</span>
+            </div>
+            <h2
+                style="font-family:'Playfair Display',serif;font-size:32px;font-weight:700;letter-spacing:-1px;margin-bottom:4px;">
+                NanoURL</h2>
+            <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--gold);margin-bottom:36px;">URL
+                Shortener with Quota Management</p>
+
+            <div class="case-section">
+                <div class="case-section-label">01 — Problem</div>
+                <p>Build a URL shortening service that generates unique short codes, handles authentication securely,
+                    and enforces monthly usage limits per user — automatically resetting quotas without manual
+                    intervention.</p>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">02 — Architecture</div>
+                <div class="mermaid-wrap">
+                    <pre class="mermaid">
+flowchart TD
+    A[User submits URL] --> B[Express API]
+    B --> C{Authenticated?}
+    C -->|No| D[Redirect to login]
+    C -->|Yes| E{Quota remaining?}
+    E -->|No| F[Return 429 limit reached]
+    E -->|Yes| G[Generate short code]
+    G --> H[(MongoDB — save mapping)]
+    H --> I[Return short URL]
+
+    J[Node-cron — 1st of month] --> K[Reset all user quotas]
+    K --> H
+          </pre>
+                </div>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">03 — Key Technical Decisions</div>
+                <ul>
+                    <li><strong>Hash-based short codes:</strong> Generated using a hashing function against the original
+                        URL + timestamp to ensure uniqueness without sequential IDs.</li>
+                    <li><strong>Node-cron for quota reset:</strong> Runs on the 1st of every month, updating all user
+                        documents in a single updateMany — no per-user cron jobs.</li>
+                    <li><strong>Passport.js for auth:</strong> Session-based authentication with email verification flow
+                        before users can create short links.</li>
+                </ul>
+            </div>
+
+            <div class="case-section">
+                <div class="case-section-label">04 — Impact</div>
+                <ul>
+                    <li>Live and deployed on Render</li>
+                    <li>Automated monthly quota reset — zero manual intervention</li>
+                    <li>Full auth flow with email verification and password reset</li>
+                </ul>
+            </div>
+
+            <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:8px;">
+                <a href="https://github.com/SegunNano/url_shortener" target="_blank" class="btn btn-outline"
+                    style="font-size:12px;padding:10px 20px;">
+                    <i data-lucide="github"></i> View Code
+                </a>
+                <a href="https://nanourl-0s58.onrender.com" target="_blank" class="btn btn-gold"
+                    style="font-size:12px;padding:10px 20px;">
+                    <i data-lucide="external-link"></i> Live Demo
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-inner">
+            <span class="footer-logo">SF.</span>
+            <span class="footer-right"><span id="year"></span> · Lagos, Nigeria</span>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
+    <script>
+        mermaid.initialize({
+            startOnLoad: true,
+            theme: document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default',
+            themeVariables: {
+                primaryColor: '#c8a96e',
+                primaryTextColor: '#f0efe9',
+                primaryBorderColor: 'rgba(200,169,110,0.3)',
+                lineColor: '#c8a96e',
+                background: '#161616',
+                mainBkg: '#1c1c1c',
+                nodeBorder: 'rgba(200,169,110,0.3)',
+            }
+        })
+    </script>
+    <script src="main.js"></script>
+</body>
+
+</html>
